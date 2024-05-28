@@ -12,27 +12,27 @@ public class Controller {
 
     private final ServiceImpl simpl;
 
-    public Controller(ServiceImpl simpl) {
+    public Controller(ServiceImpl simpl) { // Constructor with dependency injection
         this.simpl = simpl;
     }
 
-    @PostMapping("/add")
-    public Anke addAnke(Anke anke) {
+    @PostMapping("/add") // Path to the method
+    public Anke addAnke(@RequestBody Anke anke) {
         return simpl.addAnke(anke);
     }
 
-    @DeleteMapping("/delete")
-    public boolean deleteAnke(Long id) {
+    @DeleteMapping("/delete/{id}")
+    public boolean deleteAnke(@PathVariable Long id) {
         return simpl.deleteAnke(id);
     }
 
     @PatchMapping("/update")
-    public Anke updateAnke(Anke anke) {
+    public Anke updateAnke(@RequestBody Anke anke) {
         return simpl.updateAnke(anke);
     }
 
-    @GetMapping("/get")
-    public Anke getAnke(Long id) {
+    @GetMapping("/get/{id}")
+    public Anke getAnke(@PathVariable Long id) {
         return simpl.getAnke(id);
     }
 

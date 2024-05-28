@@ -12,7 +12,7 @@ public class ServiceImpl implements IService {
 
     private final IRepository repository;
 
-    public ServiceImpl(IRepository repository) {
+    public ServiceImpl(IRepository repository) { // Constructor with dependency injection
         this.repository = repository;
     }
 
@@ -46,9 +46,12 @@ public class ServiceImpl implements IService {
         try {
             if (repository.existsById(anke.getId())) {
                 Anke updatedAnke = repository.getReferenceById(anke.getId());
-                updatedAnke.setName(anke.getName());
-                updatedAnke.setSurname(anke.getSurname());
-                updatedAnke.setAge(anke.getAge());
+                if (anke.getName() != null)
+                    updatedAnke.setName(anke.getName());
+                if (anke.getSurname() != null)
+                    updatedAnke.setSurname(anke.getSurname());
+                if (anke.getAge() > 0)
+                    updatedAnke.setAge(anke.getAge());
                 return repository.save(updatedAnke);
             } else {
                 return null;
