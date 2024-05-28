@@ -3,6 +3,7 @@ package com.anke.Backend_Spring_Anke.controller;
 import com.anke.Backend_Spring_Anke.entities.Anke;
 import com.anke.Backend_Spring_Anke.impl.ServiceImpl;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -39,5 +40,13 @@ public class Controller {
     @GetMapping("/getAll")
     public List<Anke> getAllAnke() {
         return simpl.getAllAnke();
+    }
+
+    @GetMapping("/modelAndView")
+    public ModelAndView modelAndView() {
+        List<Anke> ankeList = simpl.getAllAnke();
+        ModelAndView modelAndView = new ModelAndView("ornek");
+        modelAndView.addObject("ankes", ankeList);
+        return modelAndView;
     }
 }

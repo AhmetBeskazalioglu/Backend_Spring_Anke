@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Instance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .odd {
+            background-color: #eef;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert('Thymeleaf ile etkileşimli bir sayfa.');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Spring Boot Instance</h1>
+</header>
+
+<div class="container">
+    <h1>Ahmet Beşkazalıoğlu</h1>
+
+    <p>Thymeleaf ile Spring Boot uygulaması geliştirmeye başladık.</p>
+
+    <p>Şu anki zaman: <span th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy HH:mm:ss')}"></span></p>
+
+    <button onclick="showAlert()">Mesaj Göster</button>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Yaşı</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ankes, ankStat : ${ankes}" th:class="${ankStat.odd}? 'odd'">
+            <td th:text="${ankes.id}"></td>
+            <td th:text="${ankes.name}"></td>
+            <td th:text="${ankes.surname}"></td>
+            <td th:text="${ankes.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    &copy; 2024 Spring Boot Application - @Ahmet Beşkazalıoğlu
+</footer>
+
+</body>
+</html>
