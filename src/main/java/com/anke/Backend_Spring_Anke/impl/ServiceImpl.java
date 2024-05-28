@@ -18,26 +18,65 @@ public class ServiceImpl implements IService {
 
     @Override
     public Anke addAnke(Anke anke) {
-        return null;
+        try {
+            return repository.save(anke);
+        } catch (Exception e) {
+            System.out.println("Error: addAnke() - "+e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public boolean deleteAnke(Long id) {
-        return false;
+        try {
+            if (repository.existsById(id)) {
+                repository.deleteById(id);
+                return true;
+            } else {
+                return false;
+            }
+        }catch (Exception e){
+            System.out.println("Error: deleteAnke() - "+e.getMessage());
+            return false;
+        }
     }
 
     @Override
     public Anke updateAnke(Anke anke) {
-        return null;
+        try {
+            if (repository.existsById(anke.getId())) {
+                Anke updatedAnke = repository.getReferenceById(anke.getId());
+                updatedAnke.setName(anke.getName());
+                updatedAnke.setSurname(anke.getSurname());
+                updatedAnke.setAge(anke.getAge());
+                return repository.save(updatedAnke);
+            } else {
+                return null;
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error: updateAnke() - "+e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public Anke getAnke(Long id) {
-        return null;
+        try {
+            return repository.findById(id).orElse(null);
+        } catch (Exception e) {
+            System.out.println("Error: getAnke() - "+e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public List<Anke> getAllAnke() {
-        return List.of();
+        try {
+            return repository.findAll();
+        } catch (Exception e) {
+            System.out.println("Error: getAllAnke() - "+e.getMessage());
+            return null;
+        }
     }
 }
