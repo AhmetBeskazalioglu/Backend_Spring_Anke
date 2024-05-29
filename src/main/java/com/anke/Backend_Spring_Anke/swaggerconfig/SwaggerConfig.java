@@ -16,9 +16,9 @@ public class SwaggerConfig {
         // Builder design pattern
         return new OpenAPI()
                 .info(new Info()
-                        .title("Project API ")
+                        .title("Anke API ")
                         .version("1.0")
-                        .description("Project API Documentation")
+                        .description("Anke API Documentation")
                         .termsOfService("http://swagger.io/terms/")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org"))
                         .contact(new Contact().email("ahmetbeskazalioglu@gmail.com")
