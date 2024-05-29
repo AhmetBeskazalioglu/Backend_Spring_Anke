@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-@Schema(name = "Anke", description = "Anke model")
+//@Schema(name = "Anke", description = "Anke model")
 @Entity // This class is an entity
 @Table(name = "anke") // Table name in the database
 public class Anke implements Serializable {

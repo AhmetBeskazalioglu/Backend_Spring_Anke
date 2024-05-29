@@ -3,15 +3,13 @@ package com.anke.Backend_Spring_Anke.controller;
 import com.anke.Backend_Spring_Anke.entities.Anke;
 import com.anke.Backend_Spring_Anke.impl.ServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController // This class is a controller
+@RestController // Swagger will detect this class as a controller
 @RequestMapping("/anke") // Path to the controller
-@Tag(name = "Anke Controller", description = "Anke Controller API")
 public class Controller {
 
     private final ServiceImpl simpl;
@@ -20,31 +18,31 @@ public class Controller {
         this.simpl = simpl;
     }
 
-    @Operation(summary = "Add Anke", description = "Add anke")
+    @Operation(summary = "Add an anke", description = "Add an anke to the database")
     @PostMapping("/add") // Path to the method
     public Anke addAnke(@RequestBody Anke anke) {
         return simpl.addAnke(anke);
     }
 
-    @Operation(summary = "Delete Anke", description = "Delete anke")
+    @Operation(summary = "Delete an anke", description = "Delete an anke from the database")
     @DeleteMapping("/delete/{id}")
     public boolean deleteAnke(@PathVariable Long id) {
         return simpl.deleteAnke(id);
     }
 
-    @Operation(summary = "Update Anke", description = "Update anke")
+    @Operation(summary = "Update an anke", description = "Update an anke in the database")
     @PatchMapping("/update")
     public Anke updateAnke(@RequestBody Anke anke) {
         return simpl.updateAnke(anke);
     }
 
-    @Operation(summary = "Get Anke", description = "Get anke")
+    @Operation(summary = "Get an anke", description = "Get an anke from the database")
     @GetMapping("/get/{id}")
     public Anke getAnke(@PathVariable Long id) {
         return simpl.getAnke(id);
     }
 
-    @Operation(summary = "Get All Anke", description = "Get all anke")
+    @Operation(summary = "Get all ankes", description = "Get all ankes from the database")
     @GetMapping("/getAll")
     public List<Anke> getAllAnke() {
         return simpl.getAllAnke();
