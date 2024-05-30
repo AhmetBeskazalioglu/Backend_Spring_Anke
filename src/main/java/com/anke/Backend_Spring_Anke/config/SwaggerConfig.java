@@ -1,4 +1,4 @@
-package com.anke.Backend_Spring_Anke.swaggerconfig;
+package com.anke.Backend_Spring_Anke.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;

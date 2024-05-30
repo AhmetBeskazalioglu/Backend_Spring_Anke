@@ -3,17 +3,22 @@ package com.anke.Backend_Spring_Anke.controller;
 import com.anke.Backend_Spring_Anke.entities.Anke;
 import com.anke.Backend_Spring_Anke.impl.ServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController // Swagger will detect this class as a controller
+@RestController/*Swagger will detect this class as a controller
+Spring Framework'te RESTful API'ler oluşturmak için kullanılır.
+Bu annotation, @Controller ve @ResponseBody annotationlarını bir araya getirir.*/
 @RequestMapping("/anke") // Path to the controller
 public class Controller {
 
+
     private final ServiceImpl simpl;
 
+    @Autowired
     public Controller(ServiceImpl simpl) { // Constructor with dependency injection
         this.simpl = simpl;
     }
