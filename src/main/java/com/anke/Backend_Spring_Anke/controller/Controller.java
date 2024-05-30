@@ -3,6 +3,7 @@ package com.anke.Backend_Spring_Anke.controller;
 import com.anke.Backend_Spring_Anke.entities.Anke;
 import com.anke.Backend_Spring_Anke.impl.ServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import java.util.List;
 Spring Framework'te RESTful API'ler oluşturmak için kullanılır.
 Bu annotation, @Controller ve @ResponseBody annotationlarını bir araya getirir.*/
 @RequestMapping("/anke") // Path to the controller
+@Tag(name = "Anke Controller", description = "Anke Controller API")
 public class Controller {
 
 
