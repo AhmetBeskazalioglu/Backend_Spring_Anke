@@ -58,7 +58,7 @@ public class Controller {
     @GetMapping("/modelAndView")
     public ModelAndView modelAndView() {
         List<Anke> ankeList = simpl.getAllAnke();
-        ModelAndView modelAndView = new ModelAndView("ornek");
+        ModelAndView modelAndView = new ModelAndView("anke");
         modelAndView.addObject("ankes", ankeList);
         return modelAndView;
     }
