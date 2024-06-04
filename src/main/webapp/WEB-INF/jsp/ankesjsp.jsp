@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Anket Listesi</title>
+    <title>Anke Listesi</title>
     <style>
         table {
             width: 100%;
@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-<h1>Anket Listesi</h1>
+<h1>Anke Listesi</h1>
 <table>
     <thead>
     <tr>
