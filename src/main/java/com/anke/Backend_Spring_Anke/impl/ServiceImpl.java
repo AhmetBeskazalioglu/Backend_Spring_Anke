@@ -21,7 +21,7 @@ public class ServiceImpl implements IService {
         try {
             return repository.save(anke);
         } catch (Exception e) {
-            System.out.println("Error: addAnke() - "+e.getMessage());
+            System.out.println("Error: addAnke() - " + e.getMessage());
             return null;
         }
     }
@@ -35,8 +35,8 @@ public class ServiceImpl implements IService {
             } else {
                 return false;
             }
-        }catch (Exception e){
-            System.out.println("Error: deleteAnke() - "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: deleteAnke() - " + e.getMessage());
             return false;
         }
     }
@@ -44,21 +44,17 @@ public class ServiceImpl implements IService {
     @Override
     public Anke updateAnke(Anke anke) {
         try {
-            if (repository.existsById(anke.getId())) {
-                Anke updatedAnke = repository.getReferenceById(anke.getId());
-                if (anke.getName() != null)
-                    updatedAnke.setName(anke.getName());
-                if (anke.getSurname() != null)
-                    updatedAnke.setSurname(anke.getSurname());
-                if (anke.getAge() > 0)
-                    updatedAnke.setAge(anke.getAge());
-                return repository.save(updatedAnke);
-            } else {
-                return null;
-            }
-        }
-        catch (Exception e) {
-            System.out.println("Error: updateAnke() - "+e.getMessage());
+            Anke updatedAnke = repository.findById(anke.getId()).get();
+            if (anke.getName() != null)
+                updatedAnke.setName(anke.getName());
+            if (anke.getSurname() != null)
+                updatedAnke.setSurname(anke.getSurname());
+            if (anke.getAge() > 0)
+                updatedAnke.setAge(anke.getAge());
+            return repository.save(updatedAnke);
+
+        } catch (Exception e) {
+            System.out.println("Error: updateAnke() - " + e.getMessage());
             return null;
         }
     }
@@ -68,7 +64,7 @@ public class ServiceImpl implements IService {
         try {
             return repository.findById(id).orElse(null);
         } catch (Exception e) {
-            System.out.println("Error: getAnke() - "+e.getMessage());
+            System.out.println("Error: getAnke() - " + e.getMessage());
             return null;
         }
     }
@@ -78,7 +74,7 @@ public class ServiceImpl implements IService {
         try {
             return repository.findAll();
         } catch (Exception e) {
-            System.out.println("Error: getAllAnke() - "+e.getMessage());
+            System.out.println("Error: getAllAnke() - " + e.getMessage());
             return null;
         }
     }

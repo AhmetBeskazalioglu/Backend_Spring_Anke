@@ -5,12 +5,13 @@ import com.anke.Backend_Spring_Anke.impl.TutorialServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/tutorial")
 @Tag(name = "Tutorial Controller", description = "Tutorial Controller API")
 public class TutorialController {
